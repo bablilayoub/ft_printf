@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:42:45 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/07 22:24:50 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:51:34 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_rule(va_list args, char const *rules, char rule_type, int i)
 	else if (rule_type == 's')
 		total += ft_putstr(va_arg(args, char *));
 	else if (rule_type == 'p')
-		total += ft_putptr(va_arg(args, uintptr_t));
+		total += ft_putptr(va_arg(args, unsigned long));
 	else if (rule_type == 'd' || rule_type == 'i')
 		total += ft_putdecimal(va_arg(args, int));
 	else if (rule_type == 'u')

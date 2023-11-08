@@ -6,37 +6,43 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 23:32:14 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/07 22:33:17 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:01:08 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	handle_ptr(uintptr_t nb, int *total)
+static void	handle_ptr(unsigned long ptr, int *total)
 {
-	if (nb >= 16)
+	char	*result;
+	int		i;
+
+	i = 0;
+	result = (char *)malloc(sizeof(char) * 16);
+	if (!result)
+		return ;
+	while (ptr >= 16)
 	{
-		handle_ptr(nb / 16, total);
-		handle_ptr(nb % 16, total);
+		result[i] = "0123456789abcdef"[ptr % 16];
+		ptr /= 16;
+		i++;
 	}
-	else
+	if (ptr < 16)
+		result[i] = "0123456789abcdef"[ptr];
+	while (i >= 0)
 	{
-		if (nb <= 9)
-			*total += ft_putchar((nb + '0'));
-		else
-			*total += ft_putchar((nb - 10 + 'a'));
+		*total += ft_putchar(result[i]);
+		i--;
 	}
+	free(result);
 }
 
-int	ft_putptr(uintptr_t ptr)
+int	ft_putptr(unsigned long ptr)
 {
 	int	total;
 
 	total = 0;
 	total += ft_putstr("0x");
-	if (ptr == 0)
-		total += ft_putchar('0');
-	else
-		handle_ptr(ptr, &total);
+	handle_ptr(ptr, &total);
 	return (total);
 }

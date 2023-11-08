@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 19:00:20 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/07 22:23:13 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:10:13 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdint.h>
 
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
-int		ft_putptr(uintptr_t ptr);
+int		ft_putptr(unsigned long ptr);
 int		ft_putdecimal(int c);
 int		ft_putudemical(int n);
 int		ft_printlowerx(unsigned int i);
