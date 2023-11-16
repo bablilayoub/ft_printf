@@ -6,31 +6,39 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:55:39 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/09 14:41:33 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/16 15:01:58 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	is_rule(char const *str, int *i)
+static int	skip_spaces(char const *str)
 {
 	int	temp;
 
 	temp = 0;
-	if (str[*i] == '%' && (str[*i + 1] == 'c' 
-			|| str[*i + 1] == 's' 
-			|| str[*i + 1] == 'p' 
-			|| str[*i + 1] == 'd'
-			|| str[*i + 1] == 'i'
-			|| str[*i + 1] == '%'
-			|| str[*i + 1] == 'u'
-			|| str[*i + 1] == 'x'
-			|| str[*i + 1] == 'X'
-		))
+	while (str[temp] == ' ')
+		temp++;
+	return (temp);
+}
+
+char	is_rule(char const *str, int *i)
+{
+	if (str[*i] == '%')
 	{
-		temp = *i + 1;
 		(*i)++;
-		return (str[temp]);
+		*i += skip_spaces(str + *i);
+		if (str[*i] == 'c' 
+			|| str[*i] == 's' 
+			|| str[*i] == 'p' 
+			|| str[*i] == 'd' 
+			|| str[*i] == 'i' 
+			|| str[*i] == '%' 
+			|| str[*i] == 'u' 
+			|| str[*i] == 'x' 
+			|| str[*i] == 'X'
+		)
+			return (str[*i]);
 	}
 	return ('\0');
 }

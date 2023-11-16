@@ -6,13 +6,13 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:42:45 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/09 14:42:09 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:47:17 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_rule(va_list args, char const *rules, char rule_type, int i)
+int	check_rule(va_list args, char const *rules, char rule_type, int *i)
 {
 	int	total;
 
@@ -30,10 +30,10 @@ int	check_rule(va_list args, char const *rules, char rule_type, int i)
 	else if (rule_type == '%')
 		total += ft_putchar('%');
 	else if (rule_type == 'x')
-		total += ft_printlowerx(va_arg(args, unsigned int));
+		total += ft_print_lower_hex(va_arg(args, unsigned int));
 	else if (rule_type == 'X')
-		total += ft_printupperx(va_arg(args, unsigned int));
-	else
-		total += ft_putchar(rules[i]);
+		total += ft_print_upper_hex(va_arg(args, unsigned int));
+	else if (!rule_type && rules[*i] != '%')
+		total += ft_putchar(rules[*i]);
 	return (total);
 }

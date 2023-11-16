@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printupperx.c                                   :+:      :+:    :+:   */
+/*   ft_print_lower_hex.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 18:18:35 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/07 18:28:43 by abablil          ###   ########.fr       */
+/*   Created: 2023/11/10 19:07:23 by abablil           #+#    #+#             */
+/*   Updated: 2023/11/10 19:07:30 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	handle_hex(unsigned int n, int *total)
 		if (n <= 9)
 			*total += ft_putchar((n + '0'));
 		else
-			*total += ft_putchar((n - 10 + 'A'));
+			*total += ft_putchar((n - 10 + 'a'));
 	}
 }
 
-int	ft_printupperx(unsigned int x)
+int	ft_print_lower_hex(unsigned int x)
 {
 	int	total;
 
