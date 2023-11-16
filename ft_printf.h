@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 19:00:20 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/10 19:10:23 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/16 15:23:04 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_putchar(char c);
 int		ft_putstr(char *str);
 int		ft_putptr(unsigned long ptr);
 int		ft_putdecimal(int c);
-int		ft_putudemical(int n);
+void	ft_putudemical(unsigned int n, int *i);
 int		ft_print_lower_hex(unsigned int i);
 int		ft_print_upper_hex(unsigned int i);
 char	is_rule(char const *str, int *i);

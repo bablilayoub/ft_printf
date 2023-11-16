@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:31:56 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/16 14:49:57 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/16 15:34:16 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,23 @@ static int	handle(char const *rules, va_list args)
 	return (printed_args);
 }
 
+static int	try_malloc(int i)
+{
+	char	*test;
+
+	test = malloc(i);
+	if (!test)
+		return (0);
+	free(test);
+	return (1);
+}
+
 int	ft_printf(const char *rules, ...)
 {
 	int		result;
 	va_list	args;
 
-	if (write(1, "", 0) == -1)
+	if (write(1, "", 0) == -1 || try_malloc(1) != 1)
 		return (-1);
 	va_start(args, rules);
 	result = handle(rules, args);
