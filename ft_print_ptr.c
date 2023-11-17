@@ -1,50 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putdecimal.c                                    :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 19:08:36 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/10 19:08:43 by abablil          ###   ########.fr       */
+/*   Created: 2023/11/06 23:32:14 by abablil           #+#    #+#             */
+/*   Updated: 2023/11/17 12:40:42 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	count_digits(int n)
+static void	handle_ptr(unsigned long ptr, int *total)
 {
-	int	count;
+	char	result[17];
+	int		i;
 
-	count = !n;
-	while (n != 0)
+	i = 0;
+	while (ptr >= 16)
 	{
-		n /= 10;
-		count++;
+		result[i] = "0123456789abcdef"[ptr % 16];
+		ptr /= 16;
+		i++;
 	}
-	return (count);
+	result[i] = '\0';
+	if (ptr < 16)
+		result[i] = "0123456789abcdef"[ptr];
+	result[i + 1] = '\0';
+	while (i >= 0)
+	{
+		*total += ft_print_char(result[i]);
+		i--;
+	}
 }
 
-int	ft_putdecimal(int n)
+int	ft_print_ptr(unsigned long ptr)
 {
-	int	digits;
 	int	total;
 
 	total = 0;
-	if (n == -2147483648)
-	{
-		total += ft_putstr("-2147483648");
-		return (total);
-	}
-	if (n < 0)
-	{
-		n = -n;
-		total += ft_putchar('-');
-	}
-	digits = count_digits(n);
-	total += digits;
-	if (n >= 10)
-		ft_putdecimal(n / 10);
-	ft_putchar(n % 10 + '0');
+	if (!ptr)
+		return (total += ft_print_str("0x0"));
+	total += ft_print_str("0x");
+	handle_ptr(ptr, &total);
 	return (total);
 }

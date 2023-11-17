@@ -1,48 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_print_decimal.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 23:32:14 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/16 15:08:21 by abablil          ###   ########.fr       */
+/*   Created: 2023/11/10 19:08:36 by abablil           #+#    #+#             */
+/*   Updated: 2023/11/17 12:40:05 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	handle_ptr(unsigned long ptr, int *total)
+static int	count_digits(int n)
 {
-	char	result[17];
-	int		i;
+	int	count;
 
-	i = 0;
-	while (ptr >= 16)
+	count = !n;
+	while (n != 0)
 	{
-		result[i] = "0123456789abcdef"[ptr % 16];
-		ptr /= 16;
-		i++;
+		n /= 10;
+		count++;
 	}
-	result[i] = '\0';
-	if (ptr < 16)
-		result[i] = "0123456789abcdef"[ptr];
-	result[i + 1] = '\0';
-	while (i >= 0)
-	{
-		*total += ft_putchar(result[i]);
-		i--;
-	}
+	return (count);
 }
 
-int	ft_putptr(unsigned long ptr)
+int	ft_print_decimal(int n)
 {
+	int	digits;
 	int	total;
 
 	total = 0;
-	if (!ptr)
-		return (total += ft_putstr("0x0"));
-	total += ft_putstr("0x");
-	handle_ptr(ptr, &total);
+	if (n == -2147483648)
+	{
+		total += ft_print_str("-2147483648");
+		return (total);
+	}
+	if (n < 0)
+	{
+		n = -n;
+		total += ft_print_char('-');
+	}
+	digits = count_digits(n);
+	total += digits;
+	if (n >= 10)
+		ft_print_decimal(n / 10);
+	ft_print_char(n % 10 + '0');
 	return (total);
 }

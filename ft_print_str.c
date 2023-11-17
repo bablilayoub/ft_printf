@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_upper_hex.c                               :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 19:08:02 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/10 19:09:37 by abablil          ###   ########.fr       */
+/*   Created: 2023/11/06 21:32:39 by abablil           #+#    #+#             */
+/*   Updated: 2023/11/17 12:56:43 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	handle_hex(unsigned int n, int *total)
+int	ft_print_str(char *str)
 {
-	if (n >= 16)
-	{
-		handle_hex(n / 16, total);
-		handle_hex(n % 16, total);
-	}
-	else
-	{
-		if (n <= 9)
-			*total += ft_putchar((n + '0'));
-		else
-			*total += ft_putchar((n - 10 + 'A'));
-	}
-}
+	int	i;
 
-int	ft_print_upper_hex(unsigned int x)
-{
-	int	total;
-
-	total = 0;
-	if (x == 0)
-		return (ft_putchar('0'));
-	handle_hex(x, &total);
-	return (total);
+	i = 0;
+	if (!str)
+		return (ft_print_str("(null)"));
+	while (str[i] != '\0')
+	{
+		ft_print_char(str[i]);
+		i++;
+	}
+	return (i);
 }

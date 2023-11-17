@@ -1,7 +1,6 @@
-SRCS =	check_rule.c ft_print_lower_hex.c \
-		ft_print_upper_hex.c ft_printf.c ft_putchar.c \
-		ft_putdecimal.c ft_putptr.c ft_putstr.c \
-		ft_putudemical.c is_rule.c
+SRCS =	check_rule.c ft_print_char.c ft_print_decimal.c \
+		ft_print_hex.c ft_print_ptr.c ft_print_str.c \
+		ft_print_u_udemical.c ft_printf.c is_rule.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 HEADER = ft_printf.h

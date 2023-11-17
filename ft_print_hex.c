@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_lower_hex.c                               :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 19:07:23 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/10 19:07:30 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:39:42 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	handle_hex(unsigned int n, int *total)
+static void	handle_hex(unsigned int n, int *total, char type)
 {
 	if (n >= 16)
 	{
-		handle_hex(n / 16, total);
-		handle_hex(n % 16, total);
+		handle_hex(n / 16, total, type);
+		handle_hex(n % 16, total, type);
 	}
 	else
 	{
 		if (n <= 9)
-			*total += ft_putchar((n + '0'));
+			*total += ft_print_char((n + '0'));
 		else
-			*total += ft_putchar((n - 10 + 'a'));
+		{
+			if (type == 'x')
+				*total += ft_print_char((n - 10 + 'a'));
+			else if (type == 'X')
+				*total += ft_print_char((n - 10 + 'A'));
+		}
 	}
 }
 
-int	ft_print_lower_hex(unsigned int x)
+int	ft_print_hex(unsigned int x, char type)
 {
 	int	total;
 
 	total = 0;
 	if (x == 0)
-		return (ft_putchar('0'));
-	handle_hex(x, &total);
+		return (ft_print_char('0'));
+	handle_hex(x, &total, type);
 	return (total);
 }

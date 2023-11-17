@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:42:45 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/17 10:36:59 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:41:31 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int	check_rule(va_list args, char const *rules, char rule_type, int *i)
 
 	total = 0;
 	if (rule_type == 'c')
-		total += ft_putchar(va_arg(args, int));
+		total += ft_print_char(va_arg(args, int));
 	else if (rule_type == 's')
-		total += ft_putstr(va_arg(args, char *));
+		total += ft_print_str(va_arg(args, char *));
 	else if (rule_type == 'p')
-		total += ft_putptr(va_arg(args, unsigned long));
+		total += ft_print_ptr(va_arg(args, unsigned long));
 	else if (rule_type == 'd' || rule_type == 'i')
-		total += ft_putdecimal(va_arg(args, int));
+		total += ft_print_decimal(va_arg(args, int));
 	else if (rule_type == 'u')
-		ft_putudemical(va_arg(args, unsigned int), &total);
+		ft_print_u_udemical(va_arg(args, unsigned int), &total);
 	else if (rule_type == '%')
-		total += ft_putchar('%');
+		total += ft_print_char('%');
 	else if (rule_type == 'x')
-		total += ft_print_lower_hex(va_arg(args, unsigned int));
+		total += ft_print_hex(va_arg(args, unsigned int), 'x');
 	else if (rule_type == 'X')
-		total += ft_print_upper_hex(va_arg(args, unsigned int));
+		total += ft_print_hex(va_arg(args, unsigned int), 'X');
 	else if (!rule_type && rules[*i] != '%' && rules[*i] != '\0')
-		total += ft_putchar(rules[*i]);
+		total += ft_print_char(rules[*i]);
 	return (total);
 }
