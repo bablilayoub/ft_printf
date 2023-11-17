@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 19:00:20 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/16 15:23:04 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/17 10:45:47 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
 
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
