@@ -5,16 +5,18 @@ SRCS =	check_rule.c ft_print_lower_hex.c \
 OBJS = $(SRCS:.c=.o)
 CC = cc
 HEADER = ft_printf.h
-FLAGS = -Wall -Wextra -Werror -I $(HEADER)
+CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 RM = rm -f
 LIBC = ar rcs
 
-$(NAME):
-	$(CC) $(FLAGS) -c $(SRCS)
+$(NAME): $(OBJS)
 	$(LIBC) $(NAME) $(OBJS)
 
 all: $(NAME)
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean: 
 	$(RM) $(OBJS)
@@ -24,4 +26,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: clean

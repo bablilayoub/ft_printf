@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:42:45 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/16 15:39:58 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/17 10:36:59 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_rule(va_list args, char const *rules, char rule_type, int *i)
 		total += ft_print_lower_hex(va_arg(args, unsigned int));
 	else if (rule_type == 'X')
 		total += ft_print_upper_hex(va_arg(args, unsigned int));
-	else if (!rule_type && rules[*i] != '%')
+	else if (!rule_type && rules[*i] != '%' && rules[*i] != '\0')
 		total += ft_putchar(rules[*i]);
 	return (total);
 }

@@ -6,11 +6,21 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:31:56 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/16 15:38:05 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/17 10:44:32 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_strlen(char const *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
 static int	handle(char const *rules, va_list args)
 {
@@ -20,7 +30,7 @@ static int	handle(char const *rules, va_list args)
 
 	i = 0;
 	printed_args = 0;
-	while (rules[i] != '\0')
+	while (rules[i] != '\0' && i <= ft_strlen(rules))
 	{
 		rule_type = is_rule(rules, &i);
 		printed_args += check_rule(args, rules, rule_type, &i);
