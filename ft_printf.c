@@ -6,13 +6,13 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:31:56 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/22 14:51:22 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:15:25 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(char const *str)
+static int	ft_strlen(char const *str)
 {
 	int	i;
 
