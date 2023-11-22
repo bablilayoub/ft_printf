@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 19:08:36 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/17 12:40:05 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:47:47 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	count_digits(int n)
 {
 	int	count;
 
-	count = !n;
+	count = (n == 0);
 	while (n != 0)
 	{
 		n /= 10;
@@ -32,10 +32,7 @@ int	ft_print_decimal(int n)
 
 	total = 0;
 	if (n == -2147483648)
-	{
-		total += ft_print_str("-2147483648");
-		return (total);
-	}
+		return (total += ft_print_str("-2147483648"), total);
 	if (n < 0)
 	{
 		n = -n;

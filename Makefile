@@ -1,6 +1,6 @@
 SRCS =	check_rule.c ft_print_char.c ft_print_decimal.c \
 		ft_print_hex.c ft_print_ptr.c ft_print_str.c \
-		ft_print_u_udemical.c ft_printf.c is_rule.c
+		ft_print_u_demical.c ft_printf.c is_rule.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 HEADER = ft_printf.h

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_u_udemical.c                              :+:      :+:    :+:   */
+/*   ft_print_u_demical.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:28 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/17 12:40:52 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/22 14:19:36 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_u_udemical(unsigned int n, int *i)
+void	handle_u_decimal(unsigned int n, int *total)
 {
 	if (n >= 10)
-	{
-		ft_print_u_udemical(n / 10, i);
-		ft_print_u_udemical(n % 10, i);
-	}
-	else
-		*(i) += ft_print_char(n % 10 + '0');
+		handle_u_decimal(n / 10, total);
+	*(total) += ft_print_char(n % 10 + '0');
+}
+
+int	ft_print_u_demical(unsigned int n)
+{
+	int	total;
+
+	total = 0;
+	handle_u_decimal(n, &total);
+	return (total);
 }

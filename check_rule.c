@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:42:45 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/17 12:41:31 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:20:25 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_rule(va_list args, char const *rules, char rule_type, int *i)
 	else if (rule_type == 'd' || rule_type == 'i')
 		total += ft_print_decimal(va_arg(args, int));
 	else if (rule_type == 'u')
-		ft_print_u_udemical(va_arg(args, unsigned int), &total);
+		total += ft_print_u_demical(va_arg(args, unsigned int));
 	else if (rule_type == '%')
 		total += ft_print_char('%');
 	else if (rule_type == 'x')
