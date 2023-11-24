@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:55:39 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/17 10:28:26 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/24 15:22:18 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,27 @@ static int	skip_spaces(char const *str)
 	return (temp);
 }
 
+static char	in_array(char c)
+{
+	char	*rules;
+
+	rules = "cspdiuxX%";
+	while (*rules)
+	{
+		if (*rules == c)
+			return (c);
+		rules++;
+	}
+	return ('\0');
+}
+
 char	is_rule(char const *str, int *i)
 {
 	if (str[*i] == '%')
 	{
 		(*i)++;
 		*i += skip_spaces(str + *i);
-		if (str[*i] == 'c' 
-			|| str[*i] == 's' 
-			|| str[*i] == 'p' 
-			|| str[*i] == 'd' 
-			|| str[*i] == 'i' 
-			|| str[*i] == '%' 
-			|| str[*i] == 'u' 
-			|| str[*i] == 'x' 
-			|| str[*i] == 'X'
-		)
-			return (str[*i]);
+		return (in_array(str[*i]));
 	}
 	return ('\0');
 }

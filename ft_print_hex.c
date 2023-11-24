@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 19:07:23 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/22 18:32:11 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/24 14:55:30 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static void	handle_hex(unsigned int n, int *total, char type)
 		else
 		{
 			if (type == 'x')
-				*total += ft_print_char((n - 10 + 'a'));
+				*total += ft_print_char("0123456789abcdef"[n]);
 			else if (type == 'X')
-				*total += ft_print_char((n - 10 + 'A'));
+				*total += ft_print_char("0123456789ABCDEF"[n]);
 		}
 	}
 }
