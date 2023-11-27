@@ -6,7 +6,7 @@
 /*   By: abablil <abablil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 19:00:20 by abablil           #+#    #+#             */
-/*   Updated: 2023/11/21 17:44:53 by abablil          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:40:34 by abablil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		ft_print_char(char c);
 int		ft_print_str(char *str);
-int		ft_print_ptr(unsigned long ptr);
+int		ft_print_ptr(unsigned long long ptr);
 int		ft_print_decimal(int c);
 int		ft_print_u_demical(unsigned int n);
 int		ft_print_hex(unsigned int i, char type);
